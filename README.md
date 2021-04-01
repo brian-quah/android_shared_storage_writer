@@ -7,10 +7,10 @@ A Flutter plugin for writing files to public shared storage on Android devices.
 Add this plugin under `dependencies` to `pubspec.yaml`:
 ```` yaml
 dependencies:
-  sunmi_thermal_printer:
+  android_shared_storage_writer:
     git:
       url: git://github.com/brian-quah/android_shared_storage_writer.git
-      ref: master
+      ref: 0.0.1
 ````
 
 To support devices with Android versions older than Android Q, add the `WRITE_EXTERNAL_STORAGE` permission to your app's `AndroidManifest.xml` file as follows:
