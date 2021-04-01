@@ -160,7 +160,7 @@ class AndroidSharedStorageWriterPlugin: FlutterPlugin, MethodCallHandler, Activi
   }
 
   private fun hasWritePermission() : Boolean {
-    return ContextCompat.checkSelfPermission(context,  Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q || ContextCompat.checkSelfPermission(context,  Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
   }
 
   private fun legacyWrite(data: ByteArray, environmentDirectory: String, filename: String, extension: String, subDirectory: String?,  overwriteExisting: Boolean = false) : File? {

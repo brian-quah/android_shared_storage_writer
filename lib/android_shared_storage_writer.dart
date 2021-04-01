@@ -76,11 +76,13 @@ class AndroidSharedStorageWriter {
   static Future<int> get _androidApiLevel async =>
       Platform.isAndroid ? await _channel.invoke(_Method.api_level) : null;
 
-  /// Checks if write permission to external storage is granted.
+  /// Checks if write permission to shared storage is granted.
+  ///
+  /// Always returns `true` for API level >= 29.
   static Future<bool> get writePermission async =>
       await _channel.invoke(_Method.write_permission);
 
-  /// Requests write permission to external storage.
+  /// Requests write permission to external storage
   ///
   /// NB: Does not wait for user input and returns upon permissions dialog launch
   static Future<void> requestWritePermission() async =>

@@ -1,3 +1,7 @@
+## 0.0.2
+
+Write permission check now returns true if API Level >= 29.
 ## 0.0.1
 
-* TODO: Describe initial release.
+Initial release.
+
