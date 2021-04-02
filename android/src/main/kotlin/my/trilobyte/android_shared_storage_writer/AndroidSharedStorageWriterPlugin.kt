@@ -5,8 +5,8 @@ import android.app.Activity
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -23,7 +23,6 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry.Registrar
 import java.io.File
 import java.net.URLConnection
 import java.util.*
@@ -150,7 +149,7 @@ class AndroidSharedStorageWriterPlugin: FlutterPlugin, MethodCallHandler, Activi
             if (file == null) {
               result.error(ErrorCode.FileExists.code, "Cannot overwrite existing file.", null)
             } else {
-              activity.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)))
+              MediaScannerConnection.scanFile(context, arrayOf("$file"), arrayOf(mimeType), null)
               result.success(file.path)
             }
           }
