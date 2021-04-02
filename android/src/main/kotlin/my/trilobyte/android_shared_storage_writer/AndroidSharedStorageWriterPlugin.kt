@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -149,6 +150,7 @@ class AndroidSharedStorageWriterPlugin: FlutterPlugin, MethodCallHandler, Activi
             if (file == null) {
               result.error(ErrorCode.FileExists.code, "Cannot overwrite existing file.", null)
             } else {
+              activity.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)))
               result.success(file.path)
             }
           }

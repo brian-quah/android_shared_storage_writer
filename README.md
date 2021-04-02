@@ -10,7 +10,7 @@ dependencies:
   android_shared_storage_writer:
     git:
       url: git://github.com/brian-quah/android_shared_storage_writer.git
-      ref: 0.0.1+1
+      ref: 0.0.1+2
 ````
 
 To support devices with Android versions older than Android Q, add the `WRITE_EXTERNAL_STORAGE` permission to your app's `AndroidManifest.xml` file as follows:
